@@ -1,0 +1,79 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+	
+
+	
+	    static ArrayList<String> list = new ArrayList<>();
+	    static Scanner scanner = new Scanner(System.in);
+
+	    public static void main(String[] args) {
+	        while (true) {
+	            System.out.println("1. Insert");
+	            System.out.println("2. Delete");
+	            System.out.println("3. Display");
+	            System.out.println("4. Search");
+	            System.out.println("5. Exit");
+	            System.out.print("Choose an option: ");
+	            int option = scanner.nextInt();
+
+	            switch (option) {
+	                case 1:
+	                    insert();
+	                    break;
+	                case 2:
+	                    delete();
+	                    break;
+	                case 3:
+	                    display();
+	                    break;
+	                case 4:
+	                    search();
+	                    break;
+	                case 5:
+	                    System.exit(0);
+	                    break;
+	                default:
+	                    System.out.println("Invalid option. Please choose a valid option.");
+	            }
+	        }
+	    }
+
+	    static void insert() {
+	        System.out.print("Enter a string to insert: ");
+	        String str = scanner.next();
+	        list.add(str);
+	        System.out.println("String inserted successfully.");
+	    }
+
+	    static void delete() {
+	        System.out.print("Enter a string to delete: ");
+	        String str = scanner.next();
+	        if (list.contains(str)) {
+	            list.remove(str);
+	            System.out.println("String deleted successfully.");
+	        } else {
+	            System.out.println("String not found in the list.");
+	        }
+	    }
+
+	    static void display() {
+	        System.out.println("List of strings:");
+	        for (String str : list) {
+	            System.out.println(str);
+	        }
+	    }
+
+	    static void search() {
+	        System.out.print("Enter a string to search: ");
+	        String str = scanner.next();
+	        if (list.contains(str)) {
+	            System.out.println("String found in the list.");
+	        } else {
+	            System.out.println("String not found in the list.");
+	        }
+	    }
+	}
+
+
