@@ -1,0 +1,54 @@
+import java.util.*;
+
+class Card {
+    String symbol;
+    int number;
+
+    Card(String symbol, int number) {
+        this.symbol = symbol;
+        this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return symbol + " " + number;
+    }
+}
+
+public class CardCollector {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Map<String, List<Card>> cardMap = new TreeMap<>();
+
+        System.out.print("Enter Number of Cards: ");
+        int numberOfCards = scanner.nextInt();
+
+        for (int i = 1; i <= numberOfCards; i++) {
+            System.out.println("Enter card " + i + ":");
+            String symbol = scanner.next();
+            int number = scanner.nextInt();
+            Card card = new Card(symbol, number);
+
+            if (!cardMap.containsKey(symbol)) {
+                cardMap.put(symbol, new ArrayList<>());
+            }
+            cardMap.get(symbol).add(card);
+        }
+
+        // Printing results
+        for (String symbol : cardMap.keySet()) {
+            List<Card> cards = cardMap.get(symbol);
+            int sum = 0;
+            for (Card card : cards) {
+                sum += card.number;
+            }
+
+            System.out.println("Symbol: " + symbol);
+            System.out.println("Cards: " + cards);
+            System.out.println("Number of cards: " + cards.size());
+            System.out.println("Sum of numbers: " + sum);
+            System.out.println();
+        }
+    }
+}
